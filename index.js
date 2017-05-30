@@ -4,6 +4,7 @@ var myVar;
 var counter = 0;
 
 var sketch = {
+	word: "dog",
 	count: 0
 };
 
@@ -13,7 +14,7 @@ myFunction();
 
 
 app.get('/', function(req, res) {
-  res.send(''+sketch.count);
+  res.send(sketch);
 
 });
 
@@ -25,9 +26,14 @@ app.listen(app.get('port'), function() {
 
 
 function myFunction() {
-    myVar = setInterval(alertFunc, 3000);
+    myVar = setInterval(alertFunc, 5000);
 }
 
 function alertFunc() {
     sketch.count++;
+    	if (sketch.count%2 == 0) {
+    		sketch.word = "cat";
+    	} else {
+    		sketch.word = "dog";
+    	}
 }
